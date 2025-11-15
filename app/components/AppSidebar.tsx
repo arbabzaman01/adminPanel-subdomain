@@ -1,6 +1,8 @@
+"use client";
+
 import { LayoutDashboard, Package, ShoppingCart, Settings, LogOut } from "lucide-react";
-import { NavLink } from "@/components/NavLink";
-import { useLocation, useNavigate } from "react-router-dom";
+import { NavLink } from "@/app/components/NavLink";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Sidebar,
   SidebarContent,
@@ -11,8 +13,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
+} from "@/app/components/ui/sidebar";
+import { Button } from "@/app/components/ui/button";
 import { toast } from "sonner";
 
 const menuItems = [
@@ -24,9 +26,9 @@ const menuItems = [
 
 export function AppSidebar() {
   const { state } = useSidebar();
-  const location = useLocation();
-  const navigate = useNavigate();
-  const currentPath = location.pathname;
+  const pathname = usePathname();
+  const router = useRouter();
+  const currentPath = pathname;
 
   const isActive = (path: string) => currentPath === path;
   const collapsed = state === "collapsed";
@@ -34,7 +36,7 @@ export function AppSidebar() {
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
     toast.success("Logged out successfully");
-    navigate("/");
+    router.push("/");
   };
 
   return (
@@ -50,7 +52,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild isActive={isActive(item.url)}>
                     <NavLink
-                      to={item.url}
+                      href={item.url}
                       end
                       className="hover:bg-accent/50"
                       activeClassName="bg-accent text-accent-foreground font-medium"
