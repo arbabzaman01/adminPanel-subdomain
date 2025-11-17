@@ -1,8 +1,28 @@
+"use client";
+
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { dashboardStats } from "@/app/lib/dummy-data";
 import { Package, ShoppingCart, DollarSign, Clock } from "lucide-react";
+import { consumeQueuedAdminToast } from "@/utils/login-toast";
 
 const Dashboard = () => {
+  useEffect(() => {
+    const snapshot = consumeQueuedAdminToast();
+
+    if (snapshot) {
+      toast.dismiss();
+      toast.success(snapshot.message, {
+        duration: snapshot.duration,
+        position: "top-right",
+        className: "login-toast",
+        icon: null,
+      });
+    }
+  }, []);
+
+
   const stats = [
     {
       title: "Total Orders",
@@ -37,8 +57,9 @@ const Dashboard = () => {
   return (
     <div className="p-4 md:p-6 lg:p-8 space-y-6">
       <div>
-        <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-        <p className="text-muted-foreground">Welcome to your admin panel overview</p>
+        <h2 className="text-3xl font-bold tracking-tight">Welcome to Your Admin Dashboard</h2>
+        <p className="text-muted-foreground">Easily manage products, orders, installment plans, settings, and your profile from one central hub.
+        </p>
       </div>
 
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">

@@ -8,13 +8,8 @@ export const ADMIN_ROLES = {
   SUPER_ADMIN: "superAdmin",
 };
 
-const SUPER_ADMIN_ACCOUNT = {
-  email: "superadmin@example.com",
-  password: "super123",
-  role: ADMIN_ROLES.SUPER_ADMIN,
-};
-
-const ADMIN_ACCOUNTS = [SUPER_ADMIN_ACCOUNT];
+export const SUPER_ADMIN_EMAIL = "superadmin@example.com";
+export const SUPER_ADMIN_PASSWORD = "super123";
 
 const persistSession = (role, email) => {
   if (typeof window === "undefined") return;
@@ -36,22 +31,22 @@ export const loginAdmin = (email, password) => {
     throw new Error("EMPTY_FIELDS");
   }
 
-  const user = ADMIN_ACCOUNTS.find(
-    (account) =>
-      account.email.toLowerCase() === sanitizedEmail.toLowerCase() &&
-      account.password === sanitizedPassword
-  );
+  const normalizedEmail = sanitizedEmail.toLowerCase();
+  const normalizedCorrectEmail = SUPER_ADMIN_EMAIL.toLowerCase();
 
-  if (!user) {
+  const isValid =
+    normalizedEmail === normalizedCorrectEmail && sanitizedPassword === SUPER_ADMIN_PASSWORD;
+
+  if (!isValid) {
     throw new Error("INVALID_CREDENTIALS");
   }
 
-  persistSession(user.role, user.email);
+  persistSession(ADMIN_ROLES.SUPER_ADMIN, SUPER_ADMIN_EMAIL);
 
   return {
     token: "loggedIn",
-    role: user.role,
-    email: user.email,
+    role: ADMIN_ROLES.SUPER_ADMIN,
+    email: SUPER_ADMIN_EMAIL,
   };
 };
 

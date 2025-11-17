@@ -1229,6 +1229,10 @@ __turbopack_context__.s([
     ()=>ADMIN_ACL,
     "ADMIN_ROLES",
     ()=>ADMIN_ROLES,
+    "SUPER_ADMIN_EMAIL",
+    ()=>SUPER_ADMIN_EMAIL,
+    "SUPER_ADMIN_PASSWORD",
+    ()=>SUPER_ADMIN_PASSWORD,
     "getAdminEmail",
     ()=>getAdminEmail,
     "getAdminRole",
@@ -1247,14 +1251,8 @@ const AUTH_EMAIL_KEY = "adminEmail";
 const ADMIN_ROLES = {
     SUPER_ADMIN: "superAdmin"
 };
-const SUPER_ADMIN_ACCOUNT = {
-    email: "superadmin@example.com",
-    password: "super123",
-    role: ADMIN_ROLES.SUPER_ADMIN
-};
-const ADMIN_ACCOUNTS = [
-    SUPER_ADMIN_ACCOUNT
-];
+const SUPER_ADMIN_EMAIL = "superadmin@example.com";
+const SUPER_ADMIN_PASSWORD = "super123";
 const persistSession = (role, email)=>{
     if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
@@ -1270,15 +1268,17 @@ const loginAdmin = (email, password)=>{
     if (!sanitizedEmail || !sanitizedPassword) {
         throw new Error("EMPTY_FIELDS");
     }
-    const user = ADMIN_ACCOUNTS.find((account)=>account.email.toLowerCase() === sanitizedEmail.toLowerCase() && account.password === sanitizedPassword);
-    if (!user) {
+    const normalizedEmail = sanitizedEmail.toLowerCase();
+    const normalizedCorrectEmail = SUPER_ADMIN_EMAIL.toLowerCase();
+    const isValid = normalizedEmail === normalizedCorrectEmail && sanitizedPassword === SUPER_ADMIN_PASSWORD;
+    if (!isValid) {
         throw new Error("INVALID_CREDENTIALS");
     }
-    persistSession(user.role, user.email);
+    persistSession(ADMIN_ROLES.SUPER_ADMIN, SUPER_ADMIN_EMAIL);
     return {
         token: "loggedIn",
-        role: user.role,
-        email: user.email
+        role: ADMIN_ROLES.SUPER_ADMIN,
+        email: SUPER_ADMIN_EMAIL
     };
 };
 const isLoggedIn = (allowedRoles = [])=>{

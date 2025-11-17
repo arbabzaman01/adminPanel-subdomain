@@ -5,6 +5,7 @@ import { SidebarProvider, SidebarTrigger } from "@/app/components/ui/sidebar";
 import { AppSidebar } from "@/app/components/AppSidebar";
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import { ADMIN_ROLES } from "@/utils/auth";
+import { LoginToastRenderer } from "@/app/components/LoginToastRenderer";
 
 type DashboardLayoutProps = {
   children: ReactNode;
@@ -19,6 +20,7 @@ export default function DashboardLayout({
 }: DashboardLayoutProps) {
   return (
     <ProtectedRoute allowedRoles={allowedRoles}>
+      <LoginToastRenderer />
       <SidebarProvider>
         <div className="min-h-screen flex w-full">
           <AppSidebar />

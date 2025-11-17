@@ -1,8 +1,6 @@
-"use client";
-
-import Login from "@/app/login/page";
+import AdminLoginScreen from "@/app/components/AdminLoginScreen";
 
 export default function AdminLoginPage() {
-  return <Login />;
+  return <AdminLoginScreen />;
 }
 

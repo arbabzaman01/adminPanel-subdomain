@@ -1546,6 +1546,10 @@ body {
   padding-top: 1rem;
 }
 
+.pr-11 {
+  padding-right: 2.75rem;
+}
+
 .text-left {
   text-align: left;
 }
