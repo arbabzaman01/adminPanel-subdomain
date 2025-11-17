@@ -6,14 +6,15 @@ const AUTH_EMAIL_KEY = "adminEmail";
 
 export const ADMIN_ROLES = {
   SUPER_ADMIN: "superAdmin",
-  ADMIN: "admin",
 };
 
-const ADMIN_ACCOUNTS = [
-  { email: "superadmin@example.com", password: "super123", role: ADMIN_ROLES.SUPER_ADMIN },
-  { email: "admin1@example.com", password: "admin123", role: ADMIN_ROLES.ADMIN },
-  { email: "admin2@example.com", password: "admin123", role: ADMIN_ROLES.ADMIN },
-];
+const SUPER_ADMIN_ACCOUNT = {
+  email: "superadmin@example.com",
+  password: "super123",
+  role: ADMIN_ROLES.SUPER_ADMIN,
+};
+
+const ADMIN_ACCOUNTS = [SUPER_ADMIN_ACCOUNT];
 
 const persistSession = (role, email) => {
   if (typeof window === "undefined") return;
@@ -93,12 +94,6 @@ export const ADMIN_ACL = {
     canAccessProducts: true,
     canAccessOrders: true,
     canAccessSettings: true,
-  },
-  [ADMIN_ROLES.ADMIN]: {
-    canAccessDashboard: true,
-    canAccessProducts: true,
-    canAccessOrders: true,
-    canAccessSettings: false,
   },
 };
 

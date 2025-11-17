@@ -11,7 +11,7 @@ type DashboardLayoutProps = {
   allowedRoles?: string[];
 };
 
-const DEFAULT_ALLOWED_ROLES = [ADMIN_ROLES.SUPER_ADMIN, ADMIN_ROLES.ADMIN];
+const DEFAULT_ALLOWED_ROLES = [ADMIN_ROLES.SUPER_ADMIN];
 
 export default function DashboardLayout({
   children,

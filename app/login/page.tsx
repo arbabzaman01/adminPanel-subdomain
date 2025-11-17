@@ -115,9 +115,9 @@ const Login = () => {
               {isLoading ? "Signing in..." : "Sign In"}
             </Button>
 
-          <div className="text-xs text-muted-foreground text-center mt-4 space-y-1">
- 
-          </div>
+          {/* <div className="text-xs text-muted-foreground text-center mt-4">
+            <p>Super Admin: superadmin@example.com / super123</p>
+          </div> */}
           </form>
         </CardContent>
       </Card>

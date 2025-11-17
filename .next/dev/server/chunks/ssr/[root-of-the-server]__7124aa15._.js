@@ -244,25 +244,15 @@ const AUTH_TOKEN_KEY = "adminAuthToken";
 const AUTH_ROLE_KEY = "adminRole";
 const AUTH_EMAIL_KEY = "adminEmail";
 const ADMIN_ROLES = {
-    SUPER_ADMIN: "superAdmin",
-    ADMIN: "admin"
+    SUPER_ADMIN: "superAdmin"
+};
+const SUPER_ADMIN_ACCOUNT = {
+    email: "superadmin@example.com",
+    password: "super123",
+    role: ADMIN_ROLES.SUPER_ADMIN
 };
 const ADMIN_ACCOUNTS = [
-    {
-        email: "superadmin@example.com",
-        password: "super123",
-        role: ADMIN_ROLES.SUPER_ADMIN
-    },
-    {
-        email: "admin1@example.com",
-        password: "admin123",
-        role: ADMIN_ROLES.ADMIN
-    },
-    {
-        email: "admin2@example.com",
-        password: "admin123",
-        role: ADMIN_ROLES.ADMIN
-    }
+    SUPER_ADMIN_ACCOUNT
 ];
 const persistSession = (role, email)=>{
     if ("TURBOPACK compile-time truthy", 1) return;
@@ -317,12 +307,6 @@ const ADMIN_ACL = {
         canAccessProducts: true,
         canAccessOrders: true,
         canAccessSettings: true
-    },
-    [ADMIN_ROLES.ADMIN]: {
-        canAccessDashboard: true,
-        canAccessProducts: true,
-        canAccessOrders: true,
-        canAccessSettings: false
     }
 };
 }),
@@ -537,13 +521,6 @@ const Login = ()=>{
                                     fileName: "[project]/app/login/page.tsx",
                                     lineNumber: 114,
                                     columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0)),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "text-xs text-muted-foreground text-center mt-4 space-y-1"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/login/page.tsx",
-                                    lineNumber: 118,
-                                    columnNumber: 11
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
