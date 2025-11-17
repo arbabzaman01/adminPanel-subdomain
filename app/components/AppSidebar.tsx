@@ -16,6 +16,7 @@ import {
 } from "@/app/components/ui/sidebar";
 import { Button } from "@/app/components/ui/button";
 import { toast } from "sonner";
+import { logout } from "@/utils/auth";
 
 const menuItems = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
@@ -34,9 +35,9 @@ export function AppSidebar() {
   const collapsed = state === "collapsed";
 
   const handleLogout = () => {
-    localStorage.removeItem("isAuthenticated");
+    logout();
     toast.success("Logged out successfully");
-    router.push("/");
+    router.replace("/admin");
   };
 
   return (

@@ -1326,6 +1326,10 @@ body {
   background-color: hsl(var(--destructive));
 }
 
+.bg-emerald-600\/10 {
+  background-color: #0596691a;
+}
+
 .bg-foreground {
   background-color: hsl(var(--foreground));
 }
@@ -1376,6 +1380,11 @@ body {
 
 .fill-current {
   fill: currentColor;
+}
+
+.object-contain {
+  -o-object-fit: contain;
+  object-fit: contain;
 }
 
 .object-cover {

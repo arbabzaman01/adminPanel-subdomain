@@ -20,13 +20,26 @@ const loveableConfig = tseslint.config(
       globals: globals.browser,
     },
     plugins: {
-      "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "react-hooks/purity": "off",
       "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+    },
+  },
+  {
+    files: [
+      "**/*config.{js,ts,cjs,mjs}",
+      "**/postcss.config.js",
+      "**/postcss.config.mjs",
+      "**/tailwind.config.js",
+    ],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+      "import/no-anonymous-default-export": "off",
     },
   },
 );

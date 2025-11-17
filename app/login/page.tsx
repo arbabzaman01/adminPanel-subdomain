@@ -1,86 +1,90 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { Label } from "@/app/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app/components/ui/card";
-import { ShieldCheck } from "lucide-react";
+import Image from "next/image";
 import toast, { Toaster } from "react-hot-toast";
-
-// ✅ Dummy users with roles
-const users = [
-  { email: "superadmin@example.com", password: "super123", role: "superadmin" },
-  { email: "admin1@example.com", password: "admin123", role: "admin" },
-  { email: "admin2@example.com", password: "admin123", role: "admin" },
-];
+import { isLoggedIn, loginAdmin } from "@/utils/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isCheckingSession, setIsCheckingSession] = useState(true);
   const router = useRouter();
 
-  // ✅ Redirect to dashboard if already logged in
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const isAuthenticated = localStorage.getItem("isAuthenticated");
-      if (isAuthenticated === "true") {
-        router.push("/dashboard");
-      }
+    if (isLoggedIn()) {
+      router.replace("/dashboard");
+      return;
     }
+    setIsCheckingSession(false);
   }, [router]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleEmptyFields = () => {
+    toast.dismiss();
+    toast("Please enter your credentials", {
+      icon: "⚠️",
+      position: "top-right",
+      style: {
+        background: "#fff8eb",
+        color: "#92400e",
+        border: "1px solid #fed7aa",
+        padding: "12px 16px",
+        borderRadius: "999px",
+      },
+    });
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!email.trim() || !password.trim()) {
+      handleEmptyFields();
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 800)); // simulate API
+      await loginAdmin(email, password);
 
-      const user = users.find((u) => u.email === email && u.password === password);
-
-      if (!user) {
+      toast.success("Login successful!", { position: "top-right" });
+      router.replace("/dashboard");
+    } catch (err) {
+      if (err instanceof Error && err.message === "INVALID_CREDENTIALS") {
         toast.error("Invalid credentials. Please try again.", {
           position: "top-right",
         });
-        setIsLoading(false);
-        return;
+      } else {
+        toast.error("Something went wrong. Please try again.", {
+          position: "top-right",
+        });
       }
-
-      if (typeof window !== "undefined") {
-        localStorage.setItem("isAuthenticated", "true");
-        localStorage.setItem("userRole", user.role);
-        localStorage.setItem("userEmail", user.email);
-      }
-
-      toast.success("Login successful!", { position: "top-right" });
-
-      setTimeout(() => {
-        router.push("/dashboard");
-      }, 500);
-    } catch (err) {
-      console.error(err);
-      toast.error("Something went wrong. Please try again.", { position: "top-right" });
     } finally {
       setIsLoading(false);
     }
   };
 
+  if (isCheckingSession) {
+    return null;
+  }
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+    <div className="min-h-screen flex items-center justify-center bg-emerald-600/10 p-4">
       <Toaster />
       <Card className="w-full max-w-md shadow-lg">
-        <CardHeader className="space-y-1 text-center">
-          <div className="flex justify-center mb-4">
-            <div className="bg-primary/10 p-3 rounded-full">
-              <ShieldCheck className="h-8 w-8 text-primary" />
-            </div>
+        <CardHeader className="space-y-0 text-center">
+          <div className="mb-1 flex justify-center">
+          <Image src="/qistlogo.png" alt="Logo" width={90}height={90} />
           </div>
-          <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
+          <CardTitle className="text-2xl font-bold">Secure Admin Sign In</CardTitle>
           <CardDescription>
-            Enter your credentials to access the admin panel
+          Enter your credentials to securely access your dashboard.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -90,7 +94,7 @@ const Login = () => {
               <Input
                 id="email"
                 type="email"
-                placeholder="admin@example.com"
+                placeholder="Enter your admin email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -101,7 +105,7 @@ const Login = () => {
               <Input
                 id="password"
                 type="password"
-                placeholder="Enter password"
+                placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -111,11 +115,9 @@ const Login = () => {
               {isLoading ? "Signing in..." : "Sign In"}
             </Button>
 
-            <div className="text-xs text-muted-foreground text-center mt-4 space-y-1">
-              <p>Superadmin: superadmin@example.com / super123</p>
-              <p>Admin1: admin1@example.com / admin123</p>
-              <p>Admin2: admin2@example.com / admin123</p>
-            </div>
+          <div className="text-xs text-muted-foreground text-center mt-4 space-y-1">
+ 
+          </div>
           </form>
         </CardContent>
       </Card>
