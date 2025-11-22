@@ -1235,6 +1235,8 @@ __turbopack_context__.s([
     ()=>SUPER_ADMIN_PASSWORD,
     "getAdminEmail",
     ()=>getAdminEmail,
+    "getAdminProfile",
+    ()=>getAdminProfile,
     "getAdminRole",
     ()=>getAdminRole,
     "isLoggedIn",
@@ -1253,12 +1255,24 @@ const ADMIN_ROLES = {
 };
 const SUPER_ADMIN_EMAIL = "superadmin@example.com";
 const SUPER_ADMIN_PASSWORD = "super123";
+const ADMIN_PROFILE_KEY = "adminProfile";
 const persistSession = (role, email)=>{
     if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
     localStorage.setItem(AUTH_TOKEN_KEY, "loggedIn");
     localStorage.setItem(AUTH_ROLE_KEY, role);
     localStorage.setItem(AUTH_EMAIL_KEY, email);
+    // Store dummy admin profile data (dynamic based on login email)
+    // When API is connected, replace this with actual API response
+    const emailName = email.split("@")[0]; // Extract name from email (e.g., "superadmin" from "superadmin@example.com")
+    const displayName = emailName.charAt(0).toUpperCase() + emailName.slice(1) + " User";
+    const adminProfile = {
+        name: displayName,
+        email: email,
+        role: "Administrator",
+        avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=3b82f6&color=fff`
+    };
+    localStorage.setItem(ADMIN_PROFILE_KEY, JSON.stringify(adminProfile));
 };
 const loginAdmin = (email, password)=>{
     if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
@@ -1302,6 +1316,13 @@ const logout = ()=>{
     localStorage.removeItem(AUTH_TOKEN_KEY);
     localStorage.removeItem(AUTH_ROLE_KEY);
     localStorage.removeItem(AUTH_EMAIL_KEY);
+    localStorage.removeItem(ADMIN_PROFILE_KEY);
+};
+const getAdminProfile = ()=>{
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const profile = localStorage.getItem(ADMIN_PROFILE_KEY);
+    return profile ? JSON.parse(profile) : null;
 };
 const getAdminEmail = ()=>{
     if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable

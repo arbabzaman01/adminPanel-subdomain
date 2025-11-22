@@ -1038,6 +1038,8 @@ __turbopack_context__.s([
     ()=>SUPER_ADMIN_PASSWORD,
     "getAdminEmail",
     ()=>getAdminEmail,
+    "getAdminProfile",
+    ()=>getAdminProfile,
     "getAdminRole",
     ()=>getAdminRole,
     "isLoggedIn",
@@ -1056,10 +1058,16 @@ const ADMIN_ROLES = {
 };
 const SUPER_ADMIN_EMAIL = "superadmin@example.com";
 const SUPER_ADMIN_PASSWORD = "super123";
+const ADMIN_PROFILE_KEY = "adminProfile";
 const persistSession = (role, email)=>{
     if ("TURBOPACK compile-time truthy", 1) return;
     //TURBOPACK unreachable
     ;
+    // Store dummy admin profile data (dynamic based on login email)
+    // When API is connected, replace this with actual API response
+    const emailName = undefined; // Extract name from email (e.g., "superadmin" from "superadmin@example.com")
+    const displayName = undefined;
+    const adminProfile = undefined;
 };
 const loginAdmin = (email, password)=>{
     if ("TURBOPACK compile-time truthy", 1) {
@@ -1099,6 +1107,12 @@ const logout = ()=>{
     if ("TURBOPACK compile-time truthy", 1) return;
     //TURBOPACK unreachable
     ;
+};
+const getAdminProfile = ()=>{
+    if ("TURBOPACK compile-time truthy", 1) return null;
+    //TURBOPACK unreachable
+    ;
+    const profile = undefined;
 };
 const getAdminEmail = ()=>{
     if ("TURBOPACK compile-time truthy", 1) return null;

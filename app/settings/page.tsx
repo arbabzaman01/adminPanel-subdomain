@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { adminProfile } from "@/app/lib/dummy-data";
+import { adminProfile as defaultAdminProfile } from "@/app/lib/dummy-data";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { Label } from "@/app/components/ui/label";
@@ -13,7 +13,7 @@ import { updatePassword, getAdminProfile } from "@/utils/password-update";
 import { SUPER_ADMIN_PASSWORD } from "@/utils/auth";
 
 const Settings = () => {
-  const [profile, setProfile] = useState(adminProfile);
+  const [profile, setProfile] = useState(defaultAdminProfile);
   const [isEditing, setIsEditing] = useState(false);
   
   // Password change state
@@ -27,11 +27,28 @@ const Settings = () => {
   const [isPasswordFormOpen, setIsPasswordFormOpen] = useState(false);
   const [storedPassword, setStoredPassword] = useState<string>("");
 
-  // Load stored password on mount
+  // Load admin profile from localStorage on mount
   useEffect(() => {
+    const loadAdminProfile = () => {
+      try {
+        const storedProfile = localStorage.getItem("adminProfile");
+        if (storedProfile) {
+          const parsedProfile = JSON.parse(storedProfile);
+          setProfile(parsedProfile);
+        }
+      } catch (error) {
+        console.error("Error loading admin profile:", error);
+        // Fallback to default profile if localStorage fails
+        setProfile(defaultAdminProfile);
+      }
+    };
+
+    loadAdminProfile();
+
+    // Load stored password
     const loadPassword = async () => {
       const adminData = await getAdminProfile();
-      setStoredPassword(adminData.password);
+      setStoredPassword(adminData?.password || "");
     };
     loadPassword();
   }, []);
@@ -39,11 +56,20 @@ const Settings = () => {
   const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    setProfile({
+    const updatedProfile = {
       ...profile,
       name: formData.get("name") as string,
-      email: formData.get("email") as string,
-    });
+      // Email is read-only, keep existing email
+    };
+    setProfile(updatedProfile);
+    
+    // Save to localStorage
+    try {
+      localStorage.setItem("adminProfile", JSON.stringify(updatedProfile));
+    } catch (error) {
+      console.error("Error saving admin profile:", error);
+    }
+    
     setIsEditing(false);
     toast.success("Profile updated successfully");
   };
@@ -156,11 +182,13 @@ const Settings = () => {
                       id="email"
                       name="email"
                       type="email"
-                      defaultValue={profile.email}
-                      className="pl-10"
-                      required
+                      value={profile.email}
+                      className="pl-10 bg-muted cursor-not-allowed"
+                      readOnly
+                      disabled
                     />
                   </div>
+                  <p className="text-xs text-muted-foreground">Email cannot be changed</p>
                 </div>
                 <div className="flex gap-2">
                   <Button type="submit">Save Changes</Button>

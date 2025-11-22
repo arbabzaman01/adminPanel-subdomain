@@ -1137,6 +1137,10 @@ body {
   cursor: pointer;
 }
 
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
 .touch-none {
   touch-action: none;
 }
