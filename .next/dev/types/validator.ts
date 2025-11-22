@@ -36,6 +36,33 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
 }
 
 
+// Validate ../../../app/admin/add-product/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/admin/add-product">> = Specific
+  const handler = {} as typeof import("../../../app/admin/add-product/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/admin/installment/add/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/admin/installment/add">> = Specific
+  const handler = {} as typeof import("../../../app/admin/installment/add/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/admin/installment/edit/[id]/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/admin/installment/edit/[id]">> = Specific
+  const handler = {} as typeof import("../../../app/admin/installment/edit/[id]/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../app/admin/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/admin">> = Specific
@@ -49,6 +76,24 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
 {
   type __IsExpected<Specific extends AppPageConfig<"/dashboard">> = Specific
   const handler = {} as typeof import("../../../app/dashboard/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/installment-plan/new/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/installment-plan/new">> = Specific
+  const handler = {} as typeof import("../../../app/installment-plan/new/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/installment-plan/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/installment-plan">> = Specific
+  const handler = {} as typeof import("../../../app/installment-plan/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
@@ -105,10 +150,55 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
 
 
 
+// Validate ../../../app/admin/add-product/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/admin/add-product">> = Specific
+  const handler = {} as typeof import("../../../app/admin/add-product/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/admin/installment/add/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/admin/installment/add">> = Specific
+  const handler = {} as typeof import("../../../app/admin/installment/add/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/admin/installment/edit/[id]/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/admin/installment/edit/[id]">> = Specific
+  const handler = {} as typeof import("../../../app/admin/installment/edit/[id]/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../app/dashboard/layout.tsx
 {
   type __IsExpected<Specific extends LayoutConfig<"/dashboard">> = Specific
   const handler = {} as typeof import("../../../app/dashboard/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/installment-plan/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/installment-plan">> = Specific
+  const handler = {} as typeof import("../../../app/installment-plan/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/installment-plan/new/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/installment-plan/new">> = Specific
+  const handler = {} as typeof import("../../../app/installment-plan/new/layout.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

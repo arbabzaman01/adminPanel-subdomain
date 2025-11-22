@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { dashboardStats } from "@/app/lib/dummy-data";
-import { Package, ShoppingCart, DollarSign, Clock } from "lucide-react";
+import { Box, ShoppingCart, CircleDollarSign, Receipt } from "lucide-react";
 import { consumeQueuedAdminToast } from "@/utils/login-toast";
 
 const Dashboard = () => {
@@ -25,32 +25,32 @@ const Dashboard = () => {
 
   const stats = [
     {
-      title: "Total Orders",
-      value: dashboardStats.totalOrders,
-      icon: ShoppingCart,
+      title: "Total Products",
+      value: dashboardStats.totalProducts,
+      icon: Box,
       color: "text-primary",
       bg: "bg-primary/10",
     },
     {
-      title: "Total Products",
-      value: dashboardStats.totalProducts,
-      icon: Package,
-      color: "text-accent",
-      bg: "bg-accent/10",
-    },
-    {
       title: "Total Revenue",
       value: `$${dashboardStats.totalRevenue.toLocaleString()}`,
-      icon: DollarSign,
+      icon: CircleDollarSign,
       color: "text-success",
       bg: "bg-success/10",
     },
     {
       title: "Active Orders",
       value: dashboardStats.activeOrders,
-      icon: Clock,
+      icon: ShoppingCart,
       color: "text-warning",
       bg: "bg-warning/10",
+    },
+    {
+      title: "Total Orders",
+      value: dashboardStats.totalOrders,
+      icon: Receipt,
+      color: "text-accent",
+      bg: "bg-accent/10",
     },
   ];
 
@@ -67,8 +67,8 @@ const Dashboard = () => {
           <Card key={stat.title}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
-              <div className={`${stat.bg} p-2 rounded-lg`}>
-                <stat.icon className={`h-4 w-4 ${stat.color}`} />
+              <div className={`${stat.bg} p-2 sm:p-2.5 rounded-lg`}>
+                <stat.icon className={`h-4 w-4 sm:h-5 sm:w-5 ${stat.color}`} />
               </div>
             </CardHeader>
             <CardContent>

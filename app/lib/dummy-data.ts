@@ -5,8 +5,12 @@ export interface Product {
   name: string;
   brand: string;
   category: string;
-  installmentPlan: string;
+  installmentPlan?: string; // Legacy field, kept for backward compatibility
+  installmentPlanId?: string; // Legacy field, kept for backward compatibility
+  installmentPlanIds?: string[]; // Array of assigned installment plan IDs
   price: number;
+  stock?: number;
+  description?: string;
   dateCreated: string;
   time: string;
   image?: string;
@@ -33,13 +37,64 @@ export interface DashboardStats {
   activeOrders: number;
 }
 
+export interface InstallmentPlan {
+  id: string;
+  planName: string;
+  weeklyPercentage: number;
+  monthlyPercentage: number;
+  totalPricePercentage: number;
+  dateCreated: string;
+  time: string;
+}
+
+export const initialInstallmentPlans: InstallmentPlan[] = [
+  {
+    id: "1",
+    planName: "Monthly",
+    weeklyPercentage: 25.0,
+    monthlyPercentage: 100.0,
+    totalPricePercentage: 100,
+    dateCreated: "2024-01-15",
+    time: "09:30 AM",
+  },
+  {
+    id: "2",
+    planName: "3-Month",
+    weeklyPercentage: 8.33,
+    monthlyPercentage: 33.33,
+    totalPricePercentage: 100,
+    dateCreated: "2024-01-16",
+    time: "10:15 AM",
+  },
+  {
+    id: "3",
+    planName: "6-Month",
+    weeklyPercentage: 4.17,
+    monthlyPercentage: 16.67,
+    totalPricePercentage: 100,
+    dateCreated: "2024-01-17",
+    time: "11:45 AM",
+  },
+  {
+    id: "4",
+    planName: "9-Month",
+    weeklyPercentage: 2.78,
+    monthlyPercentage: 11.11,
+    totalPricePercentage: 100,
+    dateCreated: "2024-01-18",
+    time: "02:20 PM",
+  },
+];
+
+export const PLAN_NAME_OPTIONS = ["Monthly", "3-Month", "6-Month", "9-Month"] as const;
+
 export const products: Product[] = [
   {
     id: "1",
     name: "iPhone 15 Pro Max",
     brand: "Apple",
     category: "Smartphones",
-    installmentPlan: "12 months",
+    installmentPlanIds: ["2", "3"], // 3-Month and 6-Month plans
     price: 1199,
     dateCreated: "2024-01-15",
     time: "09:30 AM",
@@ -50,7 +105,7 @@ export const products: Product[] = [
     name: "Samsung Galaxy S24 Ultra",
     brand: "Samsung",
     category: "Smartphones",
-    installmentPlan: "18 months",
+    installmentPlanIds: ["1", "2", "3"], // Monthly, 3-Month, and 6-Month plans
     price: 1099,
     dateCreated: "2024-01-16",
     time: "10:15 AM",
@@ -61,7 +116,7 @@ export const products: Product[] = [
     name: "MacBook Pro 16",
     brand: "Apple",
     category: "Laptops",
-    installmentPlan: "24 months",
+    installmentPlanIds: ["1"], // Monthly plan only
     price: 2499,
     dateCreated: "2024-01-17",
     time: "11:45 AM",
@@ -72,7 +127,7 @@ export const products: Product[] = [
     name: "Dell XPS 15",
     brand: "Dell",
     category: "Laptops",
-    installmentPlan: "12 months",
+    installmentPlanIds: ["2", "4"], // 3-Month and 9-Month plans
     price: 1799,
     dateCreated: "2024-01-18",
     time: "02:20 PM",
@@ -83,7 +138,7 @@ export const products: Product[] = [
     name: "Sony WH-1000XM5",
     brand: "Sony",
     category: "Headphones",
-    installmentPlan: "6 months",
+    // No installment plans assigned
     price: 399,
     dateCreated: "2024-01-19",
     time: "03:30 PM",
@@ -94,7 +149,7 @@ export const products: Product[] = [
     name: "iPad Pro 12.9",
     brand: "Apple",
     category: "Tablets",
-    installmentPlan: "12 months",
+    installmentPlanIds: ["3", "4"], // 6-Month and 9-Month plans
     price: 1099,
     dateCreated: "2024-01-20",
     time: "04:15 PM",
@@ -105,7 +160,7 @@ export const products: Product[] = [
     name: "PlayStation 5",
     brand: "Sony",
     category: "Gaming",
-    installmentPlan: "12 months",
+    installmentPlanIds: ["2"], // 3-Month plan only
     price: 499,
     dateCreated: "2024-01-21",
     time: "09:00 AM",
@@ -116,7 +171,7 @@ export const products: Product[] = [
     name: "LG OLED TV 65",
     brand: "LG",
     category: "Electronics",
-    installmentPlan: "24 months",
+    // No installment plans assigned
     price: 1999,
     dateCreated: "2024-01-22",
     time: "10:30 AM",

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/project/adminside%28qistfy%29/admin/app/installment-plan/new/layout.tsx"],"sourcesContent":["import DashboardLayout from \"@/app/components/DashboardLayout\";\r\n\r\nexport default function Layout({\r\n  children,\r\n}: {\r\n  children: React.ReactNode;\r\n}) {\r\n  return <DashboardLayout>{children}</DashboardLayout>;\r\n}\r\n\r\n"],"names":[],"mappings":";;;;;AAAA;;;AAEe,SAAS,OAAO,EAC7B,QAAQ,EAGT;IACC,qBAAO,8OAAC,gJAAe;kBAAE;;;;;;AAC3B"}}]
+}

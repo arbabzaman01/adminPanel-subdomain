@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { adminProfile } from "@/app/lib/dummy-data";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
@@ -7,12 +7,34 @@ import { Label } from "@/app/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/app/components/ui/avatar";
 import { toast } from "sonner";
-
-import { User, Mail, Shield } from "lucide-react";
+import { Eye, EyeOff, User, Mail, Shield, Lock } from "lucide-react";
+import { validatePassword } from "@/utils/password-validation";
+import { updatePassword, getAdminProfile } from "@/utils/password-update";
+import { SUPER_ADMIN_PASSWORD } from "@/utils/auth";
 
 const Settings = () => {
   const [profile, setProfile] = useState(adminProfile);
   const [isEditing, setIsEditing] = useState(false);
+  
+  // Password change state
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+  const [isPasswordFormOpen, setIsPasswordFormOpen] = useState(false);
+  const [storedPassword, setStoredPassword] = useState<string>("");
+
+  // Load stored password on mount
+  useEffect(() => {
+    const loadPassword = async () => {
+      const adminData = await getAdminProfile();
+      setStoredPassword(adminData.password);
+    };
+    loadPassword();
+  }, []);
 
   const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,6 +46,64 @@ const Settings = () => {
     });
     setIsEditing(false);
     toast.success("Profile updated successfully");
+  };
+
+  const handlePasswordChange = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // Sanitize inputs
+    const sanitizedCurrent = currentPassword.trim();
+    const sanitizedNew = newPassword.trim();
+    const sanitizedConfirm = confirmPassword.trim();
+
+    // Validate all fields are filled
+    if (!sanitizedCurrent || !sanitizedNew || !sanitizedConfirm) {
+      toast.error("Current password incorrect or new passwords do not match", { duration: 5000 });
+      return;
+    }
+
+    // Validate password change
+    const validation = validatePassword(
+      sanitizedCurrent,
+      sanitizedNew,
+      sanitizedConfirm,
+      storedPassword || SUPER_ADMIN_PASSWORD
+    );
+
+    if (!validation.isValid) {
+      toast.error("Current password incorrect or new passwords do not match", { duration: 5000 });
+      return;
+    }
+
+    setIsChangingPassword(true);
+
+    try {
+      const result = await updatePassword(sanitizedCurrent, sanitizedNew);
+
+      if (result.success) {
+        toast.success("Password updated successfully", { duration: 5000 });
+        // Reset form
+        setCurrentPassword("");
+        setNewPassword("");
+        setConfirmPassword("");
+        setIsPasswordFormOpen(false);
+        // Update stored password for future validation
+        setStoredPassword(sanitizedNew);
+      } else {
+        toast.error("Current password incorrect or new passwords do not match", { duration: 5000 });
+      }
+    } catch (error) {
+      toast.error("Current password incorrect or new passwords do not match", { duration: 5000 });
+    } finally {
+      setIsChangingPassword(false);
+    }
+  };
+
+  const handleCancelPasswordChange = () => {
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmPassword("");
+    setIsPasswordFormOpen(false);
   };
 
   return (
@@ -124,9 +204,112 @@ const Settings = () => {
             <CardDescription>Manage your password and security settings</CardDescription>
           </CardHeader>
           <CardContent>
-            <Button variant="outline" onClick={() => toast.info("Password change feature coming soon")}>
-              Change Password
-            </Button>
+            {!isPasswordFormOpen ? (
+              <Button variant="outline" onClick={() => setIsPasswordFormOpen(true)}>
+                <Lock className="mr-2 h-4 w-4" />
+                Change Password
+              </Button>
+            ) : (
+              <form onSubmit={handlePasswordChange} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="currentPassword">Current Password</Label>
+                  <div className="relative">
+                    <Input
+                      id="currentPassword"
+                      type={showCurrentPassword ? "text" : "password"}
+                      value={currentPassword}
+                      onChange={(e) => setCurrentPassword(e.target.value)}
+                      placeholder="Enter your current password"
+                      className="pr-11"
+                      required
+                    />
+                    <button
+                      type="button"
+                      aria-label={showCurrentPassword ? "Hide password" : "Show password"}
+                      className="absolute inset-y-0 right-3 flex items-center text-muted-foreground hover:text-foreground transition"
+                      onClick={() => setShowCurrentPassword((prev) => !prev)}
+                    >
+                      {showCurrentPassword ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="newPassword">New Password</Label>
+                  <div className="relative">
+                    <Input
+                      id="newPassword"
+                      type={showNewPassword ? "text" : "password"}
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      placeholder="Enter new password (min 8 chars, 1 number, 1 special char)"
+                      className="pr-11"
+                      required
+                    />
+                    <button
+                      type="button"
+                      aria-label={showNewPassword ? "Hide password" : "Show password"}
+                      className="absolute inset-y-0 right-3 flex items-center text-muted-foreground hover:text-foreground transition"
+                      onClick={() => setShowNewPassword((prev) => !prev)}
+                    >
+                      {showNewPassword ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                    </button>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Must be at least 8 characters with 1 number and 1 special character
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="confirmPassword">Confirm New Password</Label>
+                  <div className="relative">
+                    <Input
+                      id="confirmPassword"
+                      type={showConfirmPassword ? "text" : "password"}
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      placeholder="Confirm your new password"
+                      className="pr-11"
+                      required
+                    />
+                    <button
+                      type="button"
+                      aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                      className="absolute inset-y-0 right-3 flex items-center text-muted-foreground hover:text-foreground transition"
+                      onClick={() => setShowConfirmPassword((prev) => !prev)}
+                    >
+                      {showConfirmPassword ? (
+                        <EyeOff className="h-4 w-4" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  <Button type="submit" disabled={isChangingPassword}>
+                    {isChangingPassword ? "Updating..." : "Update Password"}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={handleCancelPasswordChange}
+                    disabled={isChangingPassword}
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </form>
+            )}
           </CardContent>
         </Card>
       </div>

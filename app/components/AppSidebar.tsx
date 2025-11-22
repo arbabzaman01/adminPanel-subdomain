@@ -22,6 +22,7 @@ const menuItems = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
   { title: "Products", url: "/products", icon: Package },
   { title: "Orders", url: "/orders", icon: ShoppingCart },
+  { title: "Installment Plans", url: "/installment-plan", icon: Package },
   { title: "Settings", url: "/settings", icon: Settings },
 ];
 
