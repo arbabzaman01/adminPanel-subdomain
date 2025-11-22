@@ -6,6 +6,8 @@
 __turbopack_context__.s([
     "PLAN_NAME_OPTIONS",
     ()=>PLAN_NAME_OPTIONS,
+    "PRODUCT_CATEGORIES",
+    ()=>PRODUCT_CATEGORIES,
     "adminProfile",
     ()=>adminProfile,
     "dashboardStats",
@@ -60,6 +62,16 @@ const PLAN_NAME_OPTIONS = [
     "3-Month",
     "6-Month",
     "9-Month"
+];
+const PRODUCT_CATEGORIES = [
+    "Smartphones",
+    "Laptops",
+    "Tablets",
+    "Headphones",
+    "Gaming",
+    "Electronics",
+    "Accessories",
+    "Other"
 ];
 const products = [
     {
@@ -753,12 +765,12 @@ const AddProduct = ()=>{
                             className: "h-4 w-4"
                         }, void 0, false, {
                             fileName: "[project]/app/admin/add-product/page.tsx",
-                            lineNumber: 176,
+                            lineNumber: 184,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/app/admin/add-product/page.tsx",
-                        lineNumber: 170,
+                        lineNumber: 178,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -768,7 +780,7 @@ const AddProduct = ()=>{
                                 children: "Add New Product"
                             }, void 0, false, {
                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                lineNumber: 179,
+                                lineNumber: 187,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -776,19 +788,19 @@ const AddProduct = ()=>{
                                 children: "Enter the product details below"
                             }, void 0, false, {
                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                lineNumber: 180,
+                                lineNumber: 188,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/admin/add-product/page.tsx",
-                        lineNumber: 178,
+                        lineNumber: 186,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/admin/add-product/page.tsx",
-                lineNumber: 169,
+                lineNumber: 177,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -799,20 +811,20 @@ const AddProduct = ()=>{
                                 children: "Product Details"
                             }, void 0, false, {
                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                lineNumber: 188,
+                                lineNumber: 196,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
                                 children: "Fill in all the required information to add a new product to your inventory"
                             }, void 0, false, {
                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                lineNumber: 189,
+                                lineNumber: 197,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/admin/add-product/page.tsx",
-                        lineNumber: 187,
+                        lineNumber: 195,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -827,7 +839,7 @@ const AddProduct = ()=>{
                                             children: "Product Image"
                                         }, void 0, false, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 197,
+                                            lineNumber: 205,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -840,7 +852,7 @@ const AddProduct = ()=>{
                                                             className: "animate-spin rounded-full h-10 w-10 border-b-2 border-primary"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                                            lineNumber: 201,
+                                                            lineNumber: 209,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -848,13 +860,13 @@ const AddProduct = ()=>{
                                                             children: "Compressing image..."
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                                            lineNumber: 202,
+                                                            lineNumber: 210,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 200,
+                                                    lineNumber: 208,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)) : imagePreview ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "relative w-full max-w-xs",
@@ -870,12 +882,12 @@ const AddProduct = ()=>{
                                                                 }
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                lineNumber: 207,
+                                                                lineNumber: 215,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                                            lineNumber: 206,
+                                                            lineNumber: 214,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         compressedFile && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -887,7 +899,7 @@ const AddProduct = ()=>{
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                                            lineNumber: 217,
+                                                            lineNumber: 225,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -900,18 +912,18 @@ const AddProduct = ()=>{
                                                                 className: "h-4 w-4"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                lineNumber: 228,
+                                                                lineNumber: 236,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                                            lineNumber: 221,
+                                                            lineNumber: 229,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 205,
+                                                    lineNumber: 213,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "relative w-full max-w-xs aspect-square rounded-lg border-2 border-dashed border-muted-foreground/30 bg-muted/30 overflow-hidden group hover:border-primary/40 hover:bg-muted/40 transition-colors cursor-pointer",
@@ -922,7 +934,7 @@ const AddProduct = ()=>{
                                                                 className: "w-8 h-8 sm:w-10 sm:h-10 text-gray-400/70 group-hover:text-gray-400 transition-colors"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                lineNumber: 234,
+                                                                lineNumber: 242,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -933,7 +945,7 @@ const AddProduct = ()=>{
                                                                         children: "Upload Product Picture"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                        lineNumber: 236,
+                                                                        lineNumber: 244,
                                                                         columnNumber: 25
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -941,7 +953,7 @@ const AddProduct = ()=>{
                                                                         children: "Click to Upload"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                        lineNumber: 239,
+                                                                        lineNumber: 247,
                                                                         columnNumber: 25
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -949,24 +961,24 @@ const AddProduct = ()=>{
                                                                         children: "Drag & Drop Image Here"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                        lineNumber: 242,
+                                                                        lineNumber: 250,
                                                                         columnNumber: 25
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                lineNumber: 235,
+                                                                lineNumber: 243,
                                                                 columnNumber: 23
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/admin/add-product/page.tsx",
-                                                        lineNumber: 233,
+                                                        lineNumber: 241,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 232,
+                                                    lineNumber: 240,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -981,7 +993,7 @@ const AddProduct = ()=>{
                                                             className: "cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed w-full"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                                            lineNumber: 250,
+                                                            lineNumber: 258,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -989,25 +1001,25 @@ const AddProduct = ()=>{
                                                             children: "JPG, PNG or WebP. Max 2MB, max dimension 1200px. Auto-compressed if needed."
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                                            lineNumber: 258,
+                                                            lineNumber: 266,
                                                             columnNumber: 19
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 249,
+                                                    lineNumber: 257,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 198,
+                                            lineNumber: 206,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                    lineNumber: 196,
+                                    lineNumber: 204,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1022,13 +1034,13 @@ const AddProduct = ()=>{
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 268,
+                                                    lineNumber: 276,
                                                     columnNumber: 30
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 267,
+                                            lineNumber: 275,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -1039,13 +1051,13 @@ const AddProduct = ()=>{
                                             className: "w-full"
                                         }, void 0, false, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 270,
+                                            lineNumber: 278,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                    lineNumber: 266,
+                                    lineNumber: 274,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1060,13 +1072,13 @@ const AddProduct = ()=>{
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 282,
+                                                    lineNumber: 290,
                                                     columnNumber: 23
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 281,
+                                            lineNumber: 289,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -1077,13 +1089,13 @@ const AddProduct = ()=>{
                                             className: "w-full"
                                         }, void 0, false, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 284,
+                                            lineNumber: 292,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                    lineNumber: 280,
+                                    lineNumber: 288,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1098,13 +1110,13 @@ const AddProduct = ()=>{
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 296,
+                                                    lineNumber: 304,
                                                     columnNumber: 26
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 295,
+                                            lineNumber: 303,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -1115,13 +1127,13 @@ const AddProduct = ()=>{
                                             className: "w-full"
                                         }, void 0, false, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 298,
+                                            lineNumber: 306,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                    lineNumber: 294,
+                                    lineNumber: 302,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1139,13 +1151,13 @@ const AddProduct = ()=>{
                                                             children: "*"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                                            lineNumber: 311,
+                                                            lineNumber: 319,
                                                             columnNumber: 25
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 310,
+                                                    lineNumber: 318,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -1159,13 +1171,13 @@ const AddProduct = ()=>{
                                                     className: "w-full"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 313,
+                                                    lineNumber: 321,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 309,
+                                            lineNumber: 317,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1176,7 +1188,7 @@ const AddProduct = ()=>{
                                                     children: "Stock"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 325,
+                                                    lineNumber: 333,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -1188,19 +1200,19 @@ const AddProduct = ()=>{
                                                     className: "w-full"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 326,
+                                                    lineNumber: 334,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 324,
+                                            lineNumber: 332,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                    lineNumber: 308,
+                                    lineNumber: 316,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1211,7 +1223,7 @@ const AddProduct = ()=>{
                                             children: "Description"
                                         }, void 0, false, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 339,
+                                            lineNumber: 347,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -1222,13 +1234,13 @@ const AddProduct = ()=>{
                                             className: "w-full resize-none"
                                         }, void 0, false, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 340,
+                                            lineNumber: 348,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                    lineNumber: 338,
+                                    lineNumber: 346,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1238,7 +1250,7 @@ const AddProduct = ()=>{
                                             children: "Installment Plans"
                                         }, void 0, false, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 351,
+                                            lineNumber: 359,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1246,7 +1258,7 @@ const AddProduct = ()=>{
                                             children: "Select which installment plans are available for this product"
                                         }, void 0, false, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 352,
+                                            lineNumber: 360,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1256,7 +1268,7 @@ const AddProduct = ()=>{
                                                 children: "No installment plans available. Create plans in the Installment Plans section."
                                             }, void 0, false, {
                                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                                lineNumber: 357,
+                                                lineNumber: 365,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)) : availablePlans.map((plan)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex items-start space-x-3 py-2 border-b last:border-b-0",
@@ -1268,7 +1280,7 @@ const AddProduct = ()=>{
                                                             className: "mt-1"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                                            lineNumber: 363,
+                                                            lineNumber: 371,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
@@ -1282,7 +1294,7 @@ const AddProduct = ()=>{
                                                                         children: plan.planName
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                        lineNumber: 374,
+                                                                        lineNumber: 382,
                                                                         columnNumber: 27
                                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1296,7 +1308,7 @@ const AddProduct = ()=>{
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                                lineNumber: 376,
+                                                                                lineNumber: 384,
                                                                                 columnNumber: 29
                                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1307,7 +1319,7 @@ const AddProduct = ()=>{
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                                lineNumber: 377,
+                                                                                lineNumber: 385,
                                                                                 columnNumber: 29
                                                                             }, ("TURBOPACK compile-time value", void 0)),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1318,41 +1330,41 @@ const AddProduct = ()=>{
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                                lineNumber: 378,
+                                                                                lineNumber: 386,
                                                                                 columnNumber: 29
                                                                             }, ("TURBOPACK compile-time value", void 0))
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                        lineNumber: 375,
+                                                                        lineNumber: 383,
                                                                         columnNumber: 27
                                                                     }, ("TURBOPACK compile-time value", void 0))
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/admin/add-product/page.tsx",
-                                                                lineNumber: 373,
+                                                                lineNumber: 381,
                                                                 columnNumber: 25
                                                             }, ("TURBOPACK compile-time value", void 0))
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                                            lineNumber: 369,
+                                                            lineNumber: 377,
                                                             columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, plan.id, true, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 362,
+                                                    lineNumber: 370,
                                                     columnNumber: 21
                                                 }, ("TURBOPACK compile-time value", void 0)))
                                         }, void 0, false, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 355,
+                                            lineNumber: 363,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                    lineNumber: 350,
+                                    lineNumber: 358,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1366,7 +1378,7 @@ const AddProduct = ()=>{
                                             children: "Cancel"
                                         }, void 0, false, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 390,
+                                            lineNumber: 398,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1377,43 +1389,43 @@ const AddProduct = ()=>{
                                                     className: "mr-2 h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                                    lineNumber: 399,
+                                                    lineNumber: 407,
                                                     columnNumber: 17
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 "Add Product"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/admin/add-product/page.tsx",
-                                            lineNumber: 398,
+                                            lineNumber: 406,
                                             columnNumber: 15
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/admin/add-product/page.tsx",
-                                    lineNumber: 389,
+                                    lineNumber: 397,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/admin/add-product/page.tsx",
-                            lineNumber: 194,
+                            lineNumber: 202,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/app/admin/add-product/page.tsx",
-                        lineNumber: 193,
+                        lineNumber: 201,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/admin/add-product/page.tsx",
-                lineNumber: 186,
+                lineNumber: 194,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/app/admin/add-product/page.tsx",
-        lineNumber: 168,
+        lineNumber: 176,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };

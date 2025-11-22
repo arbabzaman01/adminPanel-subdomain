@@ -1160,7 +1160,7 @@ const menuItems = [
     },
     {
         title: "Installment Plans",
-        url: "/plans",
+        url: "/installment-plan",
         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$package$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Package$3e$__["Package"]
     },
     {

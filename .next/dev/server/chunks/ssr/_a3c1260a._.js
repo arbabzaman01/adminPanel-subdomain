@@ -91,6 +91,8 @@ CardFooter.displayName = "CardFooter";
 __turbopack_context__.s([
     "PLAN_NAME_OPTIONS",
     ()=>PLAN_NAME_OPTIONS,
+    "PRODUCT_CATEGORIES",
+    ()=>PRODUCT_CATEGORIES,
     "adminProfile",
     ()=>adminProfile,
     "dashboardStats",
@@ -145,6 +147,16 @@ const PLAN_NAME_OPTIONS = [
     "3-Month",
     "6-Month",
     "9-Month"
+];
+const PRODUCT_CATEGORIES = [
+    "Smartphones",
+    "Laptops",
+    "Tablets",
+    "Headphones",
+    "Gaming",
+    "Electronics",
+    "Accessories",
+    "Other"
 ];
 const products = [
     {

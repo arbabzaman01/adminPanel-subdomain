@@ -88,6 +88,17 @@ export const initialInstallmentPlans: InstallmentPlan[] = [
 
 export const PLAN_NAME_OPTIONS = ["Monthly", "3-Month", "6-Month", "9-Month"] as const;
 
+export const PRODUCT_CATEGORIES = [
+  "Smartphones",
+  "Laptops",
+  "Tablets",
+  "Headphones",
+  "Gaming",
+  "Electronics",
+  "Accessories",
+  "Other",
+] as const;
+
 export const products: Product[] = [
   {
     id: "1",

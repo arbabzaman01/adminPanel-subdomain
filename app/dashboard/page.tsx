@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { dashboardStats } from "@/app/lib/dummy-data";
-import { Box, ShoppingCart, CircleDollarSign, Receipt } from "lucide-react";
+import { Boxes, ShoppingCart, DollarSign, Package } from "lucide-react";
 import { consumeQueuedAdminToast } from "@/utils/login-toast";
 
 const Dashboard = () => {
@@ -27,30 +27,30 @@ const Dashboard = () => {
     {
       title: "Total Products",
       value: dashboardStats.totalProducts,
-      icon: Box,
+      icon: Boxes,
       color: "text-primary",
       bg: "bg-primary/10",
     },
     {
       title: "Total Revenue",
       value: `$${dashboardStats.totalRevenue.toLocaleString()}`,
-      icon: CircleDollarSign,
+      icon: DollarSign,
       color: "text-success",
       bg: "bg-success/10",
     },
     {
       title: "Active Orders",
       value: dashboardStats.activeOrders,
-      icon: ShoppingCart,
+      icon: Package,
       color: "text-warning",
       bg: "bg-warning/10",
     },
     {
       title: "Total Orders",
-      value: dashboardStats.totalOrders,
-      icon: Receipt,
-      color: "text-accent",
-      bg: "bg-accent/10",
+      value: dashboardStats.totalOrders || 0,
+      icon: ShoppingCart,
+      color: "text-indigo-600 dark:text-indigo-300",
+      bg: "bg-indigo-100 dark:bg-indigo-900/30",
     },
   ];
 
@@ -68,7 +68,7 @@ const Dashboard = () => {
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
               <div className={`${stat.bg} p-2 sm:p-2.5 rounded-lg`}>
-                <stat.icon className={`h-4 w-4 sm:h-5 sm:w-5 ${stat.color}`} />
+                <stat.icon className={`w-6 h-6 ${stat.title === "Total Orders" ? stat.color : "text-primary"}`} />
               </div>
             </CardHeader>
             <CardContent>

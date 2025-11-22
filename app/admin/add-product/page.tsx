@@ -10,8 +10,16 @@ import imageCompression from "browser-image-compression";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/app/components/ui/card";
 import { Label } from "@/app/components/ui/label";
 import { Checkbox } from "@/app/components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/app/components/ui/select";
 import { ArrowLeft, Save, Upload, X } from "lucide-react";
 import { toast } from "sonner";
+import { PRODUCT_CATEGORIES } from "@/app/lib/dummy-data";
 
 const AddProduct = () => {
   const router = useRouter();
@@ -21,6 +29,8 @@ const AddProduct = () => {
   const [imagePreview, setImagePreview] = useState<string>("");
   const [isCompressing, setIsCompressing] = useState(false);
   const [compressedFile, setCompressedFile] = useState<File | null>(null);
+  const [category, setCategory] = useState<string>("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Constants for image compression
@@ -138,15 +148,44 @@ const AddProduct = () => {
     );
   };
 
+  const validateForm = (): boolean => {
+    const newErrors: Record<string, string> = {};
+
+    if (!category) {
+      newErrors.category = "Category is required";
+    }
+
+    const priceInput = document.getElementById("price") as HTMLInputElement;
+    const price = priceInput ? Number(priceInput.value) : 0;
+    if (!price || isNaN(price) || price <= 0) {
+      newErrors.price = "Price must be a number greater than 0";
+    }
+
+    const stockInput = document.getElementById("stock") as HTMLInputElement;
+    const stock = stockInput ? stockInput.value : "";
+    if (stock && (isNaN(Number(stock)) || Number(stock) < 0)) {
+      newErrors.stock = "Stock must be a non-negative number";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      toast.error("Please fix the errors in the form");
+      return;
+    }
+
     const formData = new FormData(e.currentTarget);
 
     const newProduct: Product = {
       id: String(Date.now()),
       name: formData.get("name") as string,
       brand: formData.get("brand") as string,
-      category: formData.get("category") as string,
+      category: category,
       price: Number(formData.get("price")),
       stock: formData.get("stock") ? Number(formData.get("stock")) : undefined,
       description: formData.get("description") as string || undefined,
@@ -295,13 +334,21 @@ const AddProduct = () => {
               <Label htmlFor="category">
                 Category <span className="text-destructive">*</span>
               </Label>
-              <Input
-                id="category"
-                name="category"
-                placeholder="e.g., Smartphones"
-                required
-                className="w-full"
-              />
+              <Select value={category} onValueChange={setCategory} required>
+                <SelectTrigger id="category" className={`w-full ${errors.category ? "border-destructive" : ""}`}>
+                  <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
+                <SelectContent>
+                  {PRODUCT_CATEGORIES.map((cat) => (
+                    <SelectItem key={cat} value={cat}>
+                      {cat}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {errors.category && (
+                <p className="text-xs text-destructive">{errors.category}</p>
+              )}
             </div>
 
             {/* Price and Stock in a row on larger screens */}
@@ -318,8 +365,11 @@ const AddProduct = () => {
                   min="0"
                   placeholder="0.00"
                   required
-                  className="w-full"
+                  className={`w-full ${errors.price ? "border-destructive" : ""}`}
                 />
+                {errors.price && (
+                  <p className="text-xs text-destructive">{errors.price}</p>
+                )}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="stock">Stock</Label>
@@ -329,8 +379,11 @@ const AddProduct = () => {
                   type="number"
                   min="0"
                   placeholder="0"
-                  className="w-full"
+                  className={`w-full ${errors.stock ? "border-destructive" : ""}`}
                 />
+                {errors.stock && (
+                  <p className="text-xs text-destructive">{errors.stock}</p>
+                )}
               </div>
             </div>
 

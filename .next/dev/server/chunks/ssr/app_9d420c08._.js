@@ -91,6 +91,8 @@ CardFooter.displayName = "CardFooter";
 __turbopack_context__.s([
     "PLAN_NAME_OPTIONS",
     ()=>PLAN_NAME_OPTIONS,
+    "PRODUCT_CATEGORIES",
+    ()=>PRODUCT_CATEGORIES,
     "adminProfile",
     ()=>adminProfile,
     "dashboardStats",
@@ -145,6 +147,16 @@ const PLAN_NAME_OPTIONS = [
     "3-Month",
     "6-Month",
     "9-Month"
+];
+const PRODUCT_CATEGORIES = [
+    "Smartphones",
+    "Laptops",
+    "Tablets",
+    "Headphones",
+    "Gaming",
+    "Electronics",
+    "Accessories",
+    "Other"
 ];
 const products = [
     {
@@ -383,32 +395,32 @@ const Dashboard = ()=>{
     }, []);
     const stats = [
         {
-            title: "Total Orders",
-            value: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$lib$2f$dummy$2d$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["dashboardStats"].totalOrders,
-            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shopping$2d$cart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ShoppingCart$3e$__["ShoppingCart"],
+            title: "Total Products",
+            value: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$lib$2f$dummy$2d$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["dashboardStats"].totalProducts,
+            icon: Box,
             color: "text-primary",
             bg: "bg-primary/10"
         },
         {
-            title: "Total Products",
-            value: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$lib$2f$dummy$2d$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["dashboardStats"].totalProducts,
-            icon: Package,
-            color: "text-accent",
-            bg: "bg-accent/10"
-        },
-        {
             title: "Total Revenue",
             value: `$${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$lib$2f$dummy$2d$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["dashboardStats"].totalRevenue.toLocaleString()}`,
-            icon: DollarSign,
+            icon: CircleDollarSign,
             color: "text-success",
             bg: "bg-success/10"
         },
         {
             title: "Active Orders",
             value: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$lib$2f$dummy$2d$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["dashboardStats"].activeOrders,
-            icon: Clock,
+            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shopping$2d$cart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ShoppingCart$3e$__["ShoppingCart"],
             color: "text-warning",
             bg: "bg-warning/10"
+        },
+        {
+            title: "Total Orders",
+            value: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$lib$2f$dummy$2d$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["dashboardStats"].totalOrders,
+            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shopping$2d$cart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ShoppingCart$3e$__["ShoppingCart"],
+            color: "text-accent",
+            bg: "bg-accent/10"
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -454,9 +466,9 @@ const Dashboard = ()=>{
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: `${stat.bg} p-2 rounded-lg`,
+                                        className: `${stat.bg} p-2 sm:p-2.5 rounded-lg`,
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(stat.icon, {
-                                            className: `h-4 w-4 ${stat.color}`
+                                            className: `h-4 w-4 sm:h-5 sm:w-5 ${stat.color}`
                                         }, void 0, false, {
                                             fileName: "[project]/app/dashboard/page.tsx",
                                             lineNumber: 71,
